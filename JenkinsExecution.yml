@@ -1,0 +1,21 @@
+---
+execution:
+- concurrency: 10
+  hold-for: 1m
+  ramp-up: 20s
+  scenario: get-requests 
+
+scenarios:
+  get-requests:
+    requests:
+      - url: http://blazedemo.com
+        method: GET
+      - url: http://blazedemo.com/register
+        method: POST
+        body:
+          username: Javier
+          password: 987654321
+
+reporting:
+- module: final-stats
+  dump-xml: stats.xml
